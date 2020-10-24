@@ -84,6 +84,7 @@ function SignUp() {
     })
       //   //Axios.post(`${REACT_APP_URL_BASE_BACKEND}/transfer`, datavalues)
       .then((result) => {
+        console.log("RESULT ", result);
         if (result.data.the_user_was_created) {
           toast.success("" + result.data.message, {
             position: "top-center",
@@ -106,6 +107,7 @@ function SignUp() {
         }
       })
       .catch((error) => {
+        console.log("ERROR  ", error);
         toast.error("" + error, {
           position: "top-center",
           autoClose: 2000,

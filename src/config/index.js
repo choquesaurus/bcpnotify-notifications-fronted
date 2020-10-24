@@ -13,9 +13,3 @@ module.exports = {
   Encode,
   Decode,
 };
-
-// REACT_APP_URL_VALID_AUTHENTICATE=http://localhost:5008/authenticate
-// REACT_APP_URL_SIGNIN=http://localhost:5008/login
-// REACT_APP_URL_CLOSE_SESSION=http://localhost:5008/logout
-// REACT_APP_URL_BASE_BACKEND=http://localhost:5008
-// REACT_APP_URL_BASE=https://744576d74057.ngrok.io
