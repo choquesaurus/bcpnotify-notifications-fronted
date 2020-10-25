@@ -14,7 +14,7 @@ import AppForm from "./modules/views/AppForm";
 //import FormButton from "./modules/form/FormButton";
 //import FormFeedback from "./modules/form/FormFeedback";
 import { Button, TextField } from "@material-ui/core";
-import Axios from "axios";
+//import Axios from "axios";
 import { REACT_APP_URL_BASE_BACKEND } from "../../config/index";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -77,17 +77,71 @@ function SignUp() {
 
       { age: parseInt(valuesSignUp.age), nrocuenta: refNroCuenta.current.value }
     );
-    // fetch(`${REACT_APP_URL_BASE_BACKEND}/signup`, {
+    fetch(`${REACT_APP_URL_BASE_BACKEND}/signup`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(datavalues),
+    })
+      .then((result) => result.json())
+      .then((result) => {
+        //console.log("RESULT ", result);
+        if (result.the_user_was_created) {
+          toast.success("" + result.message, {
+            position: "top-center",
+            autoClose: 4000,
+            closeOnClick: true,
+            hideProgressBar: false,
+            pauseOnHover: true,
+            draggable: true,
+          });
+        }
+        if (result.the_user_was_created === false) {
+          toast.error("" + result.message, {
+            position: "top-center",
+            autoClose: 4000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+          });
+        }
+      })
+      .catch((error) => {
+        toast.error("" + error.message, {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+      });
+
+    // headers: {
+    //   "Content-Type": "application/json",
+    // },
+
+    // Axios({
     //   method: "POST",
+    //   url: `${REACT_APP_URL_BASE_BACKEND}/signup`,
+    //   data: datavalues,
     //   headers: {
     //     "Content-Type": "application/json",
     //   },
-    //   body: JSON.stringify(datavalues),
     // })
-    //   .then((result) => result.json())
-    //      .then((result) => {
-    //     console.log("RESULT ", result);
-    //     if (result.the_user_was_created) {
+    //   //   //Axios.post(`${REACT_APP_URL_BASE_BACKEND}/transfer`, datavalues)
+    //   .then((result) => {
+    //     setvaluesSignUp({
+    //       name: "",
+    //       password: "",
+    //       email: "",
+    //       last_name: "",
+    //       age: 18,
+    //     });
+    //     //console.log("RESULT ", result);
+    //     if (result.data.the_user_was_created) {
     //       toast.success("" + result.data.message, {
     //         position: "top-center",
     //         autoClose: 4000,
@@ -108,62 +162,17 @@ function SignUp() {
     //       });
     //     }
     //   })
-    //   .catch((error) => console.log(error));
-
-    // headers: {
-    //   "Content-Type": "application/json",
-    // },
-
-    Axios({
-      method: "POST",
-      url: `${REACT_APP_URL_BASE_BACKEND}/signup`,
-      data: datavalues,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      //   //Axios.post(`${REACT_APP_URL_BASE_BACKEND}/transfer`, datavalues)
-      .then((result) => {
-        setvaluesSignUp({
-          name: "",
-          password: "",
-          email: "",
-          last_name: "",
-          age: 18,
-        });
-        //console.log("RESULT ", result);
-        if (result.data.the_user_was_created) {
-          toast.success("" + result.data.message, {
-            position: "top-center",
-            autoClose: 4000,
-            closeOnClick: true,
-            hideProgressBar: false,
-            pauseOnHover: true,
-            draggable: true,
-          });
-        }
-        if (result.data.the_user_was_created === false) {
-          toast.error("" + result.data.message, {
-            position: "top-center",
-            autoClose: 4000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-          });
-        }
-      })
-      .catch((error) => {
-        //console.log("ERROR  ", error);
-        toast.error("" + error, {
-          position: "top-center",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-        });
-      });
+    //   .catch((error) => {
+    //     //console.log("ERROR  ", error);
+    //     toast.error("" + error, {
+    //       position: "top-center",
+    //       autoClose: 2000,
+    //       hideProgressBar: false,
+    //       closeOnClick: true,
+    //       pauseOnHover: true,
+    //       draggable: true,
+    //     });
+    //   });
     //console.log(datavalues);
   };
   const GenerateNroCuenta = () => {
