@@ -15,7 +15,9 @@ import AppForm from "./modules/views/AppForm";
 //import FormFeedback from "./modules/form/FormFeedback";
 import { Button, TextField } from "@material-ui/core";
 //import Axios from "axios";
-import { REACT_APP_URL_BASE_BACKEND } from "../../config/index";
+
+//import { REACT_APP_URL_BASE_BACKEND } from "../../config/index";
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // const useStyles = makeStyles((theme) => ({
@@ -87,7 +89,7 @@ function SignUp() {
     })
       .then((result) => result.json())
       .then((result) => {
-        //console.log("RESULT ", result);
+        console.log("RESULT ", result);
         if (result.the_user_was_created) {
           toast.success("" + result.message, {
             position: "top-center",
