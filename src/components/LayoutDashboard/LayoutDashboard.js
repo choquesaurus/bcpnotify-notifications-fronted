@@ -209,6 +209,7 @@ export default function Dashboard() {
 
   const CloseSession = async () => {
     //await (await fetch("http://localhost:5006/logout")).json();
+    window.localStorage.clear();
     window.location.href = `${REACT_APP_URL_BASE_BACKEND}/logout`;
   };
 

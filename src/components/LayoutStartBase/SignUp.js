@@ -37,10 +37,11 @@ function SignUp() {
   //const classes = useStyles();
   const refNroCuenta = React.useRef(null);
   const [valuesSignUp, setvaluesSignUp] = React.useState({
+    name: "",
     password: "",
     email: "",
     last_name: "",
-    age: 0,
+    age: 18,
   });
   //const [sent, setSent] = React.useState(false);
 
@@ -76,15 +77,61 @@ function SignUp() {
 
       { age: parseInt(valuesSignUp.age), nrocuenta: refNroCuenta.current.value }
     );
+    // fetch(`${REACT_APP_URL_BASE_BACKEND}/signup`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(datavalues),
+    // })
+    //   .then((result) => result.json())
+    //      .then((result) => {
+    //     console.log("RESULT ", result);
+    //     if (result.the_user_was_created) {
+    //       toast.success("" + result.data.message, {
+    //         position: "top-center",
+    //         autoClose: 4000,
+    //         closeOnClick: true,
+    //         hideProgressBar: false,
+    //         pauseOnHover: true,
+    //         draggable: true,
+    //       });
+    //     }
+    //     if (result.data.the_user_was_created === false) {
+    //       toast.error("" + result.data.message, {
+    //         position: "top-center",
+    //         autoClose: 4000,
+    //         hideProgressBar: false,
+    //         closeOnClick: true,
+    //         pauseOnHover: true,
+    //         draggable: true,
+    //       });
+    //     }
+    //   })
+    //   .catch((error) => console.log(error));
+
+    // headers: {
+    //   "Content-Type": "application/json",
+    // },
 
     Axios({
       method: "POST",
       url: `${REACT_APP_URL_BASE_BACKEND}/signup`,
       data: datavalues,
+      headers: {
+        "Content-Type": "application/json",
+      },
     })
       //   //Axios.post(`${REACT_APP_URL_BASE_BACKEND}/transfer`, datavalues)
       .then((result) => {
-        console.log("RESULT ", result);
+        setvaluesSignUp({
+          name: "",
+          password: "",
+          email: "",
+          last_name: "",
+          age: 18,
+        });
+        //console.log("RESULT ", result);
         if (result.data.the_user_was_created) {
           toast.success("" + result.data.message, {
             position: "top-center",
@@ -107,7 +154,7 @@ function SignUp() {
         }
       })
       .catch((error) => {
-        console.log("ERROR  ", error);
+        //console.log("ERROR  ", error);
         toast.error("" + error, {
           position: "top-center",
           autoClose: 2000,
@@ -117,7 +164,7 @@ function SignUp() {
           draggable: true,
         });
       });
-    console.log(datavalues);
+    //console.log(datavalues);
   };
   const GenerateNroCuenta = () => {
     let range_cero_siete = Math.floor(Math.random() * 9999999 + 1) + "";
@@ -143,7 +190,7 @@ function SignUp() {
           </Typography>
           <Typography variant="body2" align="center">
             <Link href="/signin" underline="always">
-              Already have an account?
+              ¿Ya tienes una cuenta?
             </Link>
           </Typography>
         </React.Fragment>
@@ -160,6 +207,7 @@ function SignUp() {
               autoFocus
               //component={RFTextField}
               //autoComplete="fname"
+              value={valuesSignUp.name}
               fullWidth
               label="First name"
               name="name"
@@ -171,6 +219,7 @@ function SignUp() {
             <TextField
               //component={RFTextField}
               //autoComplete="lname"
+              value={valuesSignUp.last_name}
               fullWidth
               label="Last name"
               name="last_name"
@@ -180,6 +229,7 @@ function SignUp() {
           </Grid>
         </Grid>
         <TextField
+          value={valuesSignUp.age}
           id="standard-number"
           label="Edad"
           required
@@ -200,6 +250,7 @@ function SignUp() {
           //onChange={changenrocuenta}
           //disabled={submitting || sent}
           //disabled={false}
+
           fullWidth
           label="nrocuenta(automatico)"
           margin="normal"
@@ -222,6 +273,7 @@ function SignUp() {
           label="Email"
           margin="normal"
           name="email"
+          value={valuesSignUp.email}
           //ref={refemail}
           required
           onChange={ChangeValuesSignup}
@@ -239,6 +291,7 @@ function SignUp() {
           label="Password"
           type="password"
           margin="normal"
+          value={valuesSignUp.password}
           onChange={ChangeValuesSignup}
         />
         {/* <FormSpy subscription={{ submitError: true }}>
