@@ -77,9 +77,10 @@ function SignUp() {
 
       { age: parseInt(valuesSignUp.age), nrocuenta: refNroCuenta.current.value }
     );
-    fetch(`${REACT_APP_URL_BASE_BACKEND}/signup`, {
+    fetch("https://bcpnotify.herokuapp.com/signup", {
       method: "POST",
       headers: {
+        Accept: "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify(datavalues),
