@@ -22,7 +22,9 @@ export default function Transfer() {
   const sendPayMent = async () => {
     let { depositoOrTranferencia, cuentareceptora } = dataTranfer;
     let data_Result_data = {
-      depositoOrTranferencia: parseInt(depositoOrTranferencia),
+      depositoOrTranferencia: Number(
+        parseFloat(depositoOrTranferencia).toFixed(2)
+      ),
       cuentareceptora,
     };
     let idUsuarioQueDepositaraOEmisor = DecodeIdUser();
