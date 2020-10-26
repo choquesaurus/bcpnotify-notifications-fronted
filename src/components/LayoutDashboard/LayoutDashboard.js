@@ -32,6 +32,8 @@ import {
   DecodeIdUser,
 } from "../../config/index";
 import { EncodeNroCuenta } from "../../config/index";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // function Copyright() {
 //   return (
 //     <Typography variant="body2" color="textSecondary" align="center">
@@ -131,7 +133,7 @@ export default function Dashboard() {
   const [open, setOpen] = React.useState(true);
   const [miSaldo, setmiSaldo] = useState("");
   const [detailsUser, setDetailsUser] = useState({});
-  const [mensaje, setMensaje] = useState("");
+  //const [mensaje, setMensaje] = useState("");
   async function getIdUser() {
     const request = await (
       await fetch(`${REACT_APP_URL_BASE_BACKEND}/user`, {
@@ -205,8 +207,17 @@ export default function Dashboard() {
 
       messaging.onMessage((payload) => {
         //alert(JSON.stringify(payload.notification));
-        setMensaje(JSON.stringify(payload.data));
-        console.log("onMessage => ", payload);
+        //setMensaje(JSON.stringify(payload.data));
+        //console.log("onMessage => ", payload);
+        toast.info(payload.data.body, {
+          position: "top-center",
+          autoClose: 7000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       });
     })();
   }, []);
@@ -227,6 +238,7 @@ export default function Dashboard() {
 
   return (
     <div className={classes.root}>
+      <ToastContainer />
       <CssBaseline />
       <AppBar
         position="absolute"
@@ -284,8 +296,8 @@ export default function Dashboard() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        MENSAJE: <br />
-        {mensaje}
+        {/* MENSAJE: <br />
+        {mensaje} */}
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
             {/* Chart */}
@@ -306,7 +318,11 @@ export default function Dashboard() {
             {/* Recent Orders */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                {JSON.stringify(detailsUser)}
+                {/* {JSON.stringify(detailsUser)} */}
+
+                {/*
+                  OUTLET RENDERIZA LOS CHILDREN
+                */}
                 <Outlet />
                 {/* <Orders /> */}
               </Paper>

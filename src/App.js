@@ -17,7 +17,7 @@ import {
 import DetailsUser from "./components/DetailsUser/DetailsUser";
 import DetailsTransfer from "./components/DetailsTransfer/DetailsTransfer";
 
-import Transfer from "./components/Transfer/Transfer";
+//import Transfer from "./components/Transfer/Transfer";
 import LayoutDashboard from "./components/LayoutDashboard/LayoutDashboard";
 import Error from "./components/Error/Error";
 
@@ -27,6 +27,8 @@ import Error from "./components/Error/Error";
 import LayoutStart from "./components/LayoutStartBase/LayoutStart";
 import Signin from "./components/LayoutStartBase/SignIn";
 import Signup from "./components/LayoutStartBase/SignUp";
+
+import Transfer from "./components/LayoutDashboard/MakeTransfer/Transfer";
 
 //import Signin from "./components/Signin/Signin";
 function App() {
@@ -53,6 +55,7 @@ function App() {
         <Route path="/bcp" element={<LayoutDashboard />}>
           <Route path="/" element={<DetailsUser />} />
           <Route path="/transfer" element={<Transfer />} />
+          {/* <Route path="/checkout" element={<Checkout />} /> */}
           <Route path="/details/:idtransfer" element={<DetailsTransfer />} />
         </Route>
         <Route path="*" element={<Error />} />
