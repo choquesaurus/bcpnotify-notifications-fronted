@@ -16,7 +16,7 @@ import AppForm from "./modules/views/AppForm";
 import { Button, TextField } from "@material-ui/core";
 //import Axios from "axios";
 
-//import { REACT_APP_URL_BASE_BACKEND } from "../../config/index";
+import { REACT_APP_URL_BASE_BACKEND } from "../../config/index";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -79,7 +79,7 @@ function SignUp() {
 
       { age: parseInt(valuesSignUp.age), nrocuenta: refNroCuenta.current.value }
     );
-    fetch("https://bcpnotify.herokuapp.com/signup", {
+    fetch(`${REACT_APP_URL_BASE_BACKEND}/signup`, {
       method: "POST",
       headers: {
         Accept: "application/json",

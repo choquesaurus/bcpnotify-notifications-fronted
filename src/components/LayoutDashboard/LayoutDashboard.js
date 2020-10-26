@@ -28,9 +28,10 @@ import { messaging, database } from "../../firebase/init";
 import {
   REACT_APP_URL_BASE_BACKEND,
   REACT_APP_URL_BASE,
-  Encode,
-  Decode,
+  EncodeIdUser,
+  DecodeIdUser,
 } from "../../config/index";
+import { EncodeNroCuenta } from "../../config/index";
 // function Copyright() {
 //   return (
 //     <Typography variant="body2" color="textSecondary" align="center">
@@ -165,10 +166,13 @@ export default function Dashboard() {
 
             //let { nrocuenta = "" } = details_user;
             setDetailsUser(details_user);
-            window.localStorage.setItem(
-              "minumerodecuenta",
-              details_user.nrocuenta
-            );
+
+            //CODIFICAR NRO DE CUENTA DEL EMISOR OR ACCOUNT CURRENT
+            EncodeNroCuenta(details_user.nrocuenta);
+            // window.localStorage.setItem(
+            //   "minumerodecuenta",
+            //   details_user.nrocuenta
+            // );
             console.log("DATA ONSNAPSHOT", details_user);
             await database
               .collection("users")
@@ -187,8 +191,8 @@ export default function Dashboard() {
         .getToken()
         .then(async (currentToken) => {
           if (currentToken) {
-            Encode(iduser);
-            const decode_iduser = Decode();
+            EncodeIdUser(iduser);
+            const decode_iduser = DecodeIdUser();
             await database
               .collection("users")
               .doc(decode_iduser)

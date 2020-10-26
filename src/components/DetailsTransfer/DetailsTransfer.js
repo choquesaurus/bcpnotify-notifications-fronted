@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import {
   REACT_APP_URL_BASE_BACKEND,
   //REACT_APP_URL_BASE,
-  Decode,
+  DecodeIdUser,
 } from "../../config/index";
 export default function DetailsTransfer() {
   const [getDetailsTransfer, setgetDetailsTransfer] = useState({});
@@ -16,7 +16,7 @@ export default function DetailsTransfer() {
         method: "POST",
         url: `${REACT_APP_URL_BASE_BACKEND}/transferdetails`,
         data: {
-          idUsuarioActual: Decode(),
+          idUsuarioActual: DecodeIdUser(),
           idtransferencia: idtransfer,
         },
       })
