@@ -131,12 +131,12 @@ export default function Transfer() {
     })
       //   //Axios.post(`${REACT_APP_URL_BASE_BACKEND}/transfer`, datavalues)
       .then(({ data }) => {
-        setDataTransfer({
-          depositoOrTranferencia: "",
-          cuentareceptora: "",
-        });
         setActiveStep(0);
-        setreceptorfound(true);
+        //setreceptorfound(true);
+        // setDataTransfer({
+        //   depositoOrTranferencia: "",
+        //   cuentareceptora: "",
+        // });
         if (data.status) {
           swal(
             data.message,
@@ -145,6 +145,10 @@ export default function Transfer() {
           ${data.to_account_transfer}`,
             "success"
           );
+          setDataTransfer({
+            depositoOrTranferencia: "",
+            cuentareceptora: "",
+          });
         }
         if (data.status === false) {
           swal("Transferencia errónea", ` ${data.message}`, "error");

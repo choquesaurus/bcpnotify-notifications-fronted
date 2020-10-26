@@ -25,6 +25,7 @@ export default function PaymentForm({ dataTransfer, setDataTransfer }) {
             id="cardNumber"
             label="Numero de cuenta"
             fullWidth
+            //value={dataTransfer}
             name="cuentareceptora"
             autoComplete="cc-number"
             onChange={ChangeDataTransfer}
@@ -40,6 +41,7 @@ export default function PaymentForm({ dataTransfer, setDataTransfer }) {
             id="expDate"
             label="Monto"
             name="depositoOrTranferencia"
+            //value={dataTransfer}
             fullWidth
             autoComplete="cc-exp"
             onChange={ChangeDataTransfer}

@@ -57,7 +57,7 @@ export default function Review({
       });
       setData(requestresult.data.message);
       setreceptorfound(requestresult.data.found);
-      console.log(requestresult.data);
+      //console.log(requestresult.data);
     })();
   }, [nrocuenta, setreceptorfound]);
   return (
