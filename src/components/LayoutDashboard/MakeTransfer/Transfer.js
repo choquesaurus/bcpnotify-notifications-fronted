@@ -136,6 +136,7 @@ export default function Transfer() {
           cuentareceptora: "",
         });
         setActiveStep(0);
+        setreceptorfound(true);
         if (data.status) {
           swal(
             data.message,
