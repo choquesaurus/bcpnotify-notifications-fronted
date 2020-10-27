@@ -14,17 +14,20 @@ import Badge from "@material-ui/core/Badge";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
+//import Avatar from "@material-ui/core/Avatar";
 //import Link from "@material-ui/core/Link";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import Button from "@material-ui/core/Button";
+//import Button from "@material-ui/core/Button";
 import { mainListItems, secondaryListItems } from "./listItems";
 import Chart from "./Chart";
 import Saldo from "./Saldo";
 //import Orders from "./Orders";
 import { Outlet } from "react-router-dom";
 import { messaging, database } from "../../firebase/init";
+import MenuAvatarProfile from "./MenuUserAvatar/MenuUserAvatarProfile";
+
 import {
   REACT_APP_URL_BASE_BACKEND,
   REACT_APP_URL_BASE,
@@ -34,6 +37,9 @@ import {
 import { EncodeNroCuenta } from "../../config/index";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+import UseContextDetailsUser from "./UseContextDetailsUser/UseContextDetailsUser";
+
 // function Copyright() {
 //   return (
 //     <Typography variant="body2" color="textSecondary" align="center">
@@ -222,11 +228,11 @@ export default function Dashboard() {
     })();
   }, []);
 
-  const CloseSession = async () => {
-    //await (await fetch("http://localhost:5006/logout")).json();
-    window.localStorage.clear();
-    window.location.href = `${REACT_APP_URL_BASE_BACKEND}/logout`;
-  };
+  // const CloseSession = async () => {
+  //   //await (await fetch("http://localhost:5006/logout")).json();
+  //   window.localStorage.clear();
+  //   window.location.href = `${REACT_APP_URL_BASE_BACKEND}/logout`;
+  // };
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -272,9 +278,12 @@ export default function Dashboard() {
               <NotificationsIcon />
             </Badge>
           </IconButton>
-          <Button variant="contained" color="secondary" onClick={CloseSession}>
+          <MenuAvatarProfile photoURL={detailsUser.photoURL} />
+          {/* <Avatar alt="Remy Sharp" src={detailsUser.photoURL} /> */}
+
+          {/* <Button variant="contained" color="secondary" onClick={CloseSession}>
             Cerrar Sesion
-          </Button>
+          </Button> */}
         </Toolbar>
       </AppBar>
       <Drawer
@@ -323,7 +332,10 @@ export default function Dashboard() {
                 {/*
                   OUTLET RENDERIZA LOS CHILDREN
                 */}
-                <Outlet />
+                <UseContextDetailsUser.Provider value={{ detailsUser }}>
+                  <Outlet />
+                </UseContextDetailsUser.Provider>
+
                 {/* <Orders /> */}
               </Paper>
             </Grid>
