@@ -18,8 +18,8 @@ function DecodeNroCuenta() {
 }
 /* FUNCION DECODE --> DECODIFICA NRO DE CUENTA EMISORA*/
 module.exports = {
-  REACT_APP_URL_BASE: "http://localhost:3001",
-  REACT_APP_URL_BASE_BACKEND: "http://localhost:5022",
+  REACT_APP_URL_BASE: "https://bcpnotify.ml",
+  REACT_APP_URL_BASE_BACKEND: "https://bcpnotify.herokuapp.com",
 
   EncodeIdUser,
   DecodeIdUser,

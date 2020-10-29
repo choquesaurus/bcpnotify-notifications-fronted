@@ -30,16 +30,20 @@ export const mainListItems = (
           <AttachMoneyIcon />
         </ListItemIcon>
         {/* <Link to="/sadsad" /> */}
-        <ListItemText primary="transfer"></ListItemText>
+        <ListItemText primary="Transferir"></ListItemText>
       </ListItem>
     </Link>
 
-    <ListItem button>
-      <ListItemIcon>
-        <ShoppingCartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Orders" />
-    </ListItem>
+    <Link to="/bcp/details">
+      <ListItem button>
+        <ListItemIcon>
+          <ShoppingCartIcon />
+        </ListItemIcon>
+        {/* <Link to="/sadsad" /> */}
+        <ListItemText primary="Mis transferencias"></ListItemText>
+      </ListItem>
+    </Link>
+
     <ListItem button>
       <ListItemIcon>
         <PeopleIcon />
