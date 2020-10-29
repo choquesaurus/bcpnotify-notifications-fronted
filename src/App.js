@@ -15,7 +15,13 @@ import {
 //import Signin from "./components/Signin/Signin";
 //import Signup from "./components/Signup/Signup";
 import DetailsUser from "./components/DetailsUser/DetailsUser";
-import DetailsTransfer from "./components/DetailsTransfer/DetailsTransfer";
+
+import LayoutMyListTransfer from "./components/MyListTransfer/LayoutMyListTransfer";
+import ListTransfers from "./components/MyListTransfer/ListTransfers/ListTransfers";
+
+//import AllTransfer from "./components/MyListTransfer/AllTransfer";
+
+import DetailsFindTransfer from "./components/MyListTransfer/DetailsFindTransfer/DetailsFindTransfer";
 
 //import Transfer from "./components/Transfer/Transfer";
 import LayoutDashboard from "./components/LayoutDashboard/LayoutDashboard";
@@ -56,7 +62,10 @@ function App() {
           <Route path="/" element={<DetailsUser />} />
           <Route path="/transfer" element={<Transfer />} />
           {/* <Route path="/checkout" element={<Checkout />} /> */}
-          <Route path="/details/:idtransfer" element={<DetailsTransfer />} />
+          <Route path="/details" element={<LayoutMyListTransfer />}>
+            <Route path="/" element={<ListTransfers />} />
+            <Route path=":idtransfer" element={<DetailsFindTransfer />} />
+          </Route>
         </Route>
         <Route path="*" element={<Error />} />
       </Routes>

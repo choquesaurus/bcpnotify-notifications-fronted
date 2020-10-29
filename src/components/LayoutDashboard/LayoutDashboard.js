@@ -181,7 +181,7 @@ export default function Dashboard() {
             //   "minumerodecuenta",
             //   details_user.nrocuenta
             // );
-            console.log("DATA ONSNAPSHOT", details_user);
+            //console.log("DATA ONSNAPSHOT", details_user);
             await database
               .collection("users")
               .doc(iduser)
@@ -190,7 +190,7 @@ export default function Dashboard() {
               .onSnapshot((result) => {
                 const { saldo } = result.data();
                 setmiSaldo(saldo);
-                console.log(saldo);
+                //console.log(saldo);
               });
           }
         });
@@ -311,13 +311,23 @@ export default function Dashboard() {
           <Grid container spacing={3}>
             {/* Chart */}
             <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}>
+              <Paper
+                data-aos="fade-right"
+                //data-aos-offset="500"
+                data-aos-duration="500"
+                className={fixedHeightPaper}
+              >
                 <Chart />
               </Paper>
             </Grid>
             {/* Recent Deposits */}
             <Grid item xs={12} md={4} lg={3}>
-              <Paper className={fixedHeightPaper}>
+              <Paper
+                data-aos="fade-left"
+                //data-aos-offset="500"
+                data-aos-duration="500"
+                className={fixedHeightPaper}
+              >
                 <Saldo
                   miSaldo={miSaldo}
                   miNumerodeCuenta={detailsUser.nrocuenta}
@@ -326,7 +336,12 @@ export default function Dashboard() {
             </Grid>
             {/* Recent Orders */}
             <Grid item xs={12}>
-              <Paper className={classes.paper}>
+              <Paper
+                data-aos="fade-right"
+                //data-aos-offset="500"
+                data-aos-duration="500"
+                className={classes.paper}
+              >
                 {/* {JSON.stringify(detailsUser)} */}
 
                 {/*

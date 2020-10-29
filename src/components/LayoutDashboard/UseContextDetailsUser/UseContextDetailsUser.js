@@ -1,5 +1,5 @@
 import React from "react";
-const AlbumOfTheWeek = React.createContext({
+const UseContextDetailsUser = React.createContext({
   //authenticate: false,
   detailsUser: {
     name: "",
@@ -10,4 +10,4 @@ const AlbumOfTheWeek = React.createContext({
     email: "",
   },
 });
-export default AlbumOfTheWeek;
+export default UseContextDetailsUser;

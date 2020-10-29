@@ -184,7 +184,11 @@ export default function Transfer() {
         </Toolbar>
       </AppBar> */}
       <main className={classes.layout}>
-        <Paper className={classes.paper}>
+        <Paper
+          data-aos="zoom-in"
+          data-aos-duration="500"
+          className={classes.paper}
+        >
           <Typography component="h1" variant="h4" align="center">
             Transferir
             {/* <br />
