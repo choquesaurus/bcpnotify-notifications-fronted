@@ -17,6 +17,7 @@ import { Button, TextField } from "@material-ui/core";
 //import Axios from "axios";
 
 import { REACT_APP_URL_BASE_BACKEND } from "../../config/index";
+import Helmet from "react-helmet";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -44,6 +45,7 @@ function SignUp() {
     email: "",
     last_name: "",
     age: 18,
+    photoURL: "",
   });
   //const [sent, setSent] = React.useState(false);
 
@@ -195,10 +197,14 @@ function SignUp() {
     <>
       <ToastContainer />
       {/* <AppAppBar /> */}
+      <Helmet>
+        <meta name="description" content="Aqui podras crearte una cuenta" />
+        <title>BCPNotify | Signup</title>
+      </Helmet>
       <AppForm>
         <React.Fragment>
           <Typography variant="h3" gutterBottom marked="center" align="center">
-            Sign Up
+            Regístrate
           </Typography>
           <Typography variant="body2" align="center">
             <Link href="/signin" underline="always">
@@ -306,6 +312,20 @@ function SignUp() {
           value={valuesSignUp.password}
           onChange={ChangeValuesSignup}
         />
+
+        <TextField
+          fullWidth
+          //component={RFTextField}
+          //disabled={submitting || sent}
+          required
+          name="photoURL"
+          //autoComplete="current-password"
+          label="photo URL"
+          type="text"
+          margin="normal"
+          value={valuesSignUp.photoURL}
+          onChange={ChangeValuesSignup}
+        />
         {/* <FormSpy subscription={{ submitError: true }}>
                 {({ submitError }) =>
                   submitError ? (
@@ -321,7 +341,7 @@ function SignUp() {
           variant="contained"
           color="secondary"
         >
-          Send
+          Crear una cuenta
         </Button>
         {/* <FormButton
           className={classes.button}

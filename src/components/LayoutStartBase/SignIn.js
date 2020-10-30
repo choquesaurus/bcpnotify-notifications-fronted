@@ -16,6 +16,7 @@ import { TextField } from "@material-ui/core";
 import isEmail from "validator/lib/isEmail";
 import isEmpty from "validator/lib/isEmpty";
 import { REACT_APP_URL_BASE_BACKEND } from "../../config/index";
+import Helmet from "react-helmet";
 
 const useStyles = makeStyles((theme) => ({
   form: {
@@ -59,20 +60,20 @@ function SignIn() {
   };
   return (
     <React.Fragment>
+      <Helmet>
+        <meta name="description" content="Aqui podras iniciar sesion" />
+        <title>BCPNotify | Signin</title>
+      </Helmet>
       {/* <AppAppBar /> */}
       <AppForm>
         <React.Fragment>
           <Typography variant="h3" gutterBottom marked="center" align="center">
-            Sign In
+            Iniciar sesión
           </Typography>
           <Typography variant="body2" align="center">
-            {"Not a member yet? "}
-            <Link
-              href="/premium-themes/onepirate/sign-up/"
-              align="center"
-              underline="always"
-            >
-              Sign Up here
+            {"¿No eres miembro todavía? "}
+            <Link href="/signup" align="center" underline="always">
+              Registrate aquí
             </Link>
           </Typography>
         </React.Fragment>
@@ -134,7 +135,7 @@ function SignIn() {
             fullWidth
           >
             {validateEmail === true && validatePassword === false
-              ? "Sent"
+              ? "Iniciar"
               : "En progreso ..."}
             {/* {submitting || sent ? "In progress…" : "Sign In"} */}
           </FormButton>

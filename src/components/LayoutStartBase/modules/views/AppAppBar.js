@@ -70,7 +70,7 @@ function AppAppBar(props) {
               to="/signin"
               //href="/premium-themes/onepirate/sign-in/"
             >
-              {"Sign In"}
+              {"Iniciar Sesión"}
             </Link>
 
             <Link
@@ -83,7 +83,7 @@ function AppAppBar(props) {
               className={clsx(classes.rightLink, classes.linkSecondary)}
               // href="/premium-themes/onepirate/sign-up/"
             >
-              {"Sign Up"}
+              {"Registrarse"}
             </Link>
           </div>
         </Toolbar>

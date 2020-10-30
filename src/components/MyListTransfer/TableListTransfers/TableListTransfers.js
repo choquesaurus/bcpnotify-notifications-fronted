@@ -4,6 +4,7 @@ import { DataGrid } from "@material-ui/data-grid";
 import { Link } from "react-router-dom";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
+import Helmet from "react-helmet";
 // const columns2 = [
 //   { field: "id", headerName: "ID", width: 70 },
 //   { field: "firstName", headerName: "First name", width: 130 },
@@ -104,6 +105,13 @@ export default function DataTable({ value, option }) {
       data-aos-duration="500"
       style={{ height: 400, width: "100%" }}
     >
+      <Helmet>
+        <meta
+          name="description"
+          content={`Mi lista de transferencias | ${option}`}
+        />
+        <title>{`BCP | Transfers | ${option}`}</title>
+      </Helmet>
       <DataGrid
         rows={value}
         columns={columns}

@@ -39,6 +39,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import UseContextDetailsUser from "./UseContextDetailsUser/UseContextDetailsUser";
+import Helmet from "react-helmet";
 
 // function Copyright() {
 //   return (
@@ -245,6 +246,10 @@ export default function Dashboard() {
   return (
     <div className={classes.root}>
       <ToastContainer />
+      <Helmet>
+        <meta name="description" content="Componente principal(Dashboard)" />
+        <title>BCPNotify | Dashboard</title>
+      </Helmet>
       <CssBaseline />
       <AppBar
         position="absolute"

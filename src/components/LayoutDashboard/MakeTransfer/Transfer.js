@@ -19,6 +19,7 @@ import {
   DecodeNroCuenta,
 } from "../../../config/index";
 import Axios from "axios";
+import Helmet from "react-helmet";
 // function Copyright() {
 //   return (
 //     <Typography variant="body2" color="textSecondary" align="center">
@@ -183,6 +184,13 @@ export default function Transfer() {
           </Typography>
         </Toolbar>
       </AppBar> */}
+      <Helmet>
+        <meta
+          name="description"
+          content="Aqui podras realizar transferencias a algun numero de cuenta"
+        />
+        <title>BCPNotify | Transfer</title>
+      </Helmet>
       <main className={classes.layout}>
         <Paper
           data-aos="zoom-in"
