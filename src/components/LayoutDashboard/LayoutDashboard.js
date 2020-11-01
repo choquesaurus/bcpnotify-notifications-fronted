@@ -216,6 +216,7 @@ export default function Dashboard() {
         //alert(JSON.stringify(payload.notification));
         //setMensaje(JSON.stringify(payload.data));
         //console.log("onMessage => ", payload);
+        new Audio(process.env.REACT_APP_URL_SOUND_NOTIFICATION).play();
         toast.info(payload.data.body, {
           position: "top-center",
           autoClose: 7000,
@@ -275,7 +276,7 @@ export default function Dashboard() {
             noWrap
             className={classes.title}
           >
-            Dashboard
+            Mi BcpNotify
           </Typography>
 
           <IconButton color="inherit">

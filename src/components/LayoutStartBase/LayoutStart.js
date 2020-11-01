@@ -28,7 +28,15 @@ function LayoutStart() {
 
       {valud.pathname === "/" ? (
         <div>
-          <p>Hey inscribete a BCP notify :)</p>
+          <img
+            alt=""
+            src="https://bindiva.com/blog/wp-content/uploads/2017/12/estrategias-para-fomentar-la-integracion-en-los-equipos-de-trabajo_.jpg"
+            style={{
+              width: "100%",
+              objectFit: "cover",
+              height: "calc(100vh - 70px )",
+            }}
+          />
         </div>
       ) : (
         <Outlet />

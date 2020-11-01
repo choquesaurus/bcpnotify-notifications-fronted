@@ -8,7 +8,7 @@ import { REACT_APP_URL_BASE_BACKEND } from "../../../config/index";
 import Badge from "@material-ui/core/Badge";
 
 import { withStyles } from "@material-ui/core/styles";
-
+import { Link } from "react-router-dom";
 const StyledBadge = withStyles((theme) => ({
   badge: {
     backgroundColor: "#44b700",
@@ -89,9 +89,12 @@ export default function SimpleMenu({ photoURL }) {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={CloseSession}>Logout</MenuItem>
+        <Link to="/bcp">
+          <MenuItem>Mi perfil</MenuItem>
+        </Link>
+
+        {/* <MenuItem onClick={handleClose}>My account</MenuItem> */}
+        <MenuItem onClick={CloseSession}>Salir</MenuItem>
       </Menu>
     </div>
   );

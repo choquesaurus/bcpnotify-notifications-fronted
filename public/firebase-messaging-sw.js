@@ -2,16 +2,24 @@ importScripts("https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js");
 importScripts(
   "https://www.gstatic.com/firebasejs/7.18.0/firebase-messaging.js"
 );
+const {
+  REACT_APP_FIREBASE_apiKey,
+  REACT_APP_FIREBASE_authDomain,
+  REACT_APP_FIREBASE_databaseURL,
+  REACT_APP_FIREBASE_projectId,
+  REACT_APP_FIREBASE_storageBucket,
+  REACT_APP_FIREBASE_messagingSenderId,
+  REACT_APP_FIREBASE_appId,
+} = process.env;
 var firebaseConfig = {
-  apiKey: "AIzaSyBVPcebGQZYNuMY7o7azgYF7OmhAQSvvdw",
-  authDomain: "notifications-examples.firebaseapp.com",
-  databaseURL: "https://notifications-examples.firebaseio.com",
-  projectId: "notifications-examples",
-  storageBucket: "notifications-examples.appspot.com",
-  messagingSenderId: "383671783933",
-  appId: "1:383671783933:web:c9147b4ceb92ec7bcb8994",
+  apiKey: REACT_APP_FIREBASE_apiKey,
+  authDomain: REACT_APP_FIREBASE_authDomain,
+  databaseURL: REACT_APP_FIREBASE_databaseURL,
+  projectId: REACT_APP_FIREBASE_projectId,
+  storageBucket: REACT_APP_FIREBASE_storageBucket,
+  messagingSenderId: REACT_APP_FIREBASE_messagingSenderId,
+  appId: REACT_APP_FIREBASE_appId,
 };
-
 firebase.initializeApp(firebaseConfig);
 const messaging = firebase.messaging();
 const url = { value: "" };
@@ -43,31 +51,31 @@ messaging.onBackgroundMessage((payload) => {
     body: payload.data.body,
     image:
       "https://image.freepik.com/vector-gratis/golpe-codo-saludo-contacto-prevencion-coronavirus_227564-125.jpg",
-    icon: "busqueda.png",
-    vibrate: [
-      200,
-      100,
-      200,
-      275,
-      425,
-      100,
-      200,
-      100,
-      200,
-      275,
-      425,
-      100,
-      75,
-      25,
-      75,
-      125,
-      75,
-      25,
-      75,
-      125,
-      100,
-      100,
-    ],
+    icon: "iconobcp.jpeg",
+    // vibrate: [
+    //   200,
+    //   100,
+    //   200,
+    //   275,
+    //   425,
+    //   100,
+    //   200,
+    //   100,
+    //   200,
+    //   275,
+    //   425,
+    //   100,
+    //   75,
+    //   25,
+    //   75,
+    //   125,
+    //   75,
+    //   25,
+    //   75,
+    //   125,
+    //   100,
+    //   100,
+    // ],
   };
 
   // console.log("GAAAA :V", payload);
