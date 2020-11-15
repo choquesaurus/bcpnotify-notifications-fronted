@@ -67,10 +67,10 @@ function SignIn() {
       {/* <AppAppBar /> */}
       <AppForm>
         <React.Fragment>
-          <Typography variant="h3" gutterBottom marked="center" align="center">
+          <Typography component={'div'} variant="h3" gutterBottom marked="center" align="center">
             Iniciar sesión
           </Typography>
-          <Typography variant="body2" align="center">
+          <Typography component={'div'} variant="body2" align="center">
             {"¿No eres miembro todavía? "}
             <Link href="/signup" align="center" underline="always">
               Registrate aquí
@@ -141,7 +141,7 @@ function SignIn() {
           </FormButton>
         </form>
 
-        <Typography align="center">
+        <Typography component={'div'}  align="center">
           <Link
             underline="always"
             href="/premium-themes/onepirate/forgot-password/"

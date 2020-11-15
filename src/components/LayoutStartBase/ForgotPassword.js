@@ -51,10 +51,10 @@ function ForgotPassword() {
       <AppAppBar />
       <AppForm>
         <React.Fragment>
-          <Typography variant="h3" gutterBottom marked="center" align="center">
+          <Typography component={'div'} variant="h3" gutterBottom marked="center" align="center">
             Forgot your password?
           </Typography>
-          <Typography variant="body2" align="center">
+          <Typography component={'div'} variant="body2" align="center">
             {"Enter your email address below and we'll " +
               'send you a link to reset your password.'}
           </Typography>

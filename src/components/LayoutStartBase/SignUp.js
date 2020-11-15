@@ -203,10 +203,10 @@ function SignUp() {
       </Helmet>
       <AppForm>
         <React.Fragment>
-          <Typography variant="h3" gutterBottom marked="center" align="center">
+          <Typography component={'div'} variant="h3" gutterBottom marked="center" align="center">
             Regístrate
           </Typography>
-          <Typography variant="body2" align="center">
+          <Typography component={'div'} variant="body2" align="center">
             <Link href="/signin" underline="always">
               ¿Ya tienes una cuenta?
             </Link>

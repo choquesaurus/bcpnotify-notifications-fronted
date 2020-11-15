@@ -19,15 +19,15 @@ export default function Deposits(props) {
   return (
     <React.Fragment>
       <Title>Mi Saldo</Title>
-      <Typography component="p" variant="h4">
-        S./ {props.miSaldo ? props.miSaldo : "Loading ..."}
+      <Typography component={'div'} variant="h4">
+        S./ {props.miSaldo ? props.miSaldo : 'Loading ...'}
       </Typography>
-      <Typography color="textSecondary" className={classes.depositContext}>
+      <Typography component={'div'} color="textSecondary" className={classes.depositContext}>
         {/* {new Date().toDateString()} */}
         {new Date().toDateString()}
         <br />
-        Nro cuenta :{" "}
-        {props.miNumerodeCuenta ? props.miNumerodeCuenta : "Loading ..."}
+        Nro cuenta :{''}
+        {props.miNumerodeCuenta ? props.miNumerodeCuenta : 'Loading ...'}
       </Typography>
       <div>
         {/* <Link color="primary" href="#" onClick={preventDefault}>

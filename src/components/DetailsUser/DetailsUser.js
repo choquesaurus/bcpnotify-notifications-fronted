@@ -31,7 +31,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box p={3}>
-          <Typography>{children}</Typography>
+          <Typography component={'div'}>{children}</Typography>
         </Box>
       )}
     </div>
@@ -104,7 +104,7 @@ export default function ScrollableTabsButtonForce() {
       </AppBar>
       <TabPanel value={value} index={0}>
         <TextField
-          id="filled-required"
+          //id="filled-required"
           //disabled
           label="Nombre"
           defaultValue="Loading . . ."
@@ -116,7 +116,7 @@ export default function ScrollableTabsButtonForce() {
         />
         &nbsp;
         <TextField
-          id="filled-required"
+          //id="filled-required"
           InputProps={{
             readOnly: true,
           }}
@@ -127,7 +127,7 @@ export default function ScrollableTabsButtonForce() {
         />
         &nbsp;
         <TextField
-          id="filled-basic"
+          //id="filled-basic"
           label="Edad"
           variant="filled"
           defaultValue="Loading . . ."
@@ -139,7 +139,7 @@ export default function ScrollableTabsButtonForce() {
         />
         &nbsp;
         <TextField
-          id="filled-basic"
+          //id="filled-basic"
           label="Correo"
           variant="filled"
           defaultValue="Loading . . ."
@@ -151,7 +151,7 @@ export default function ScrollableTabsButtonForce() {
         />
         &nbsp;
         <TextField
-          id="filled-basic"
+          //id="filled-basic"
           label="Número de cuenta"
           variant="filled"
           defaultValue="Loading . . ."
@@ -165,7 +165,7 @@ export default function ScrollableTabsButtonForce() {
         <br />
         <hr />
         <TextField
-          id="filled-basic"
+          //id="filled-basic"
           label="Url de imagen de perfil"
           InputProps={{
             readOnly: true,
@@ -177,16 +177,16 @@ export default function ScrollableTabsButtonForce() {
         />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Typography variant="h5">¡Es gratis!</Typography>
-        <Typography variant="subtitle1">
+        <Typography component={'div'} variant="h5">¡Es gratis!</Typography>
+        <Typography component={'div'} variant="subtitle1">
           No tiene costo de descarga, ni pago de comisiones.
         </Typography>
-        <Typography variant="h5">¡Dinero al instante!</Typography>
-        <Typography variant="subtitle1">
+        <Typography component={'div'} variant="h5">¡Dinero al instante!</Typography>
+        <Typography component={'div'} variant="subtitle1">
           El dinero ingresará inmediatamente a tu cuenta bancaria.
         </Typography>
-        <Typography variant="h5">¡Sin complicaciones!</Typography>
-        <Typography variant="subtitle1">
+        <Typography component={'div'} variant="h5">¡Sin complicaciones!</Typography>
+        <Typography component={'div'} variant="subtitle1">
           Olvídate del vuelto y los billetes falsos. Evita entrar en contacto
           con efectivo manipulado por otros.
         </Typography>

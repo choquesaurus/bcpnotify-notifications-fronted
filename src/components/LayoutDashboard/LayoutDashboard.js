@@ -14,16 +14,13 @@ import Badge from "@material-ui/core/Badge";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-//import Avatar from "@material-ui/core/Avatar";
-//import Link from "@material-ui/core/Link";
+
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-//import Button from "@material-ui/core/Button";
 import { mainListItems, secondaryListItems } from "./listItems";
 import Chart from "./Chart";
 import Saldo from "./Saldo";
-//import Orders from "./Orders";
 import { Outlet } from "react-router-dom";
 import { messaging, database } from "../../firebase/init";
 import MenuAvatarProfile from "./MenuUserAvatar/MenuUserAvatarProfile";
@@ -40,20 +37,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 import UseContextDetailsUser from "./UseContextDetailsUser/UseContextDetailsUser";
 import Helmet from "react-helmet";
-
-// function Copyright() {
-//   return (
-//     <Typography variant="body2" color="textSecondary" align="center">
-//       {"Copyright © "}
-//       <Link color="inherit" href="https://material-ui.com/">
-//         Your Website
-//       </Link>{" "}
-//       {new Date().getFullYear()}
-//       {"."}
-//     </Typography>
-//   );
-// }
-
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -270,7 +253,8 @@ export default function Dashboard() {
             <MenuIcon />
           </IconButton>
           <Typography
-            component="h1"
+          
+            component="div"
             variant="h6"
             color="inherit"
             noWrap
@@ -313,6 +297,7 @@ export default function Dashboard() {
         <div className={classes.appBarSpacer} />
         {/* MENSAJE: <br />
         {mensaje} */}
+        
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
             {/* Chart */}

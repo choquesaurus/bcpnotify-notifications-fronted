@@ -1,14 +1,14 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-//import AppBar from "@material-ui/core/AppBar";
-//import Toolbar from "@material-ui/core/Toolbar";
+
+
 import Paper from "@material-ui/core/Paper";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
 import Button from "@material-ui/core/Button";
-//import Link from "@material-ui/core/Link";
+
 import Typography from "@material-ui/core/Typography";
 import PaymentForm from "./PaymentForm";
 import Review from "./Review";
@@ -20,19 +20,6 @@ import {
 } from "../../../config/index";
 import Axios from "axios";
 import Helmet from "react-helmet";
-// function Copyright() {
-//   return (
-//     <Typography variant="body2" color="textSecondary" align="center">
-//       {"Copyright © "}
-//       <Link color="inherit" href="https://material-ui.com/">
-//         Your Website
-//       </Link>{" "}
-//       {new Date().getFullYear()}
-//       {"."}
-//     </Typography>
-//   );
-// }
-
 const useStyles = makeStyles((theme) => ({
   appBar: {
     position: "relative",
@@ -74,8 +61,6 @@ const useStyles = makeStyles((theme) => ({
 const steps = ["Ingresar informacion", "Revision de orden"];
 function getStepContent(step, dataTransfer, setDataTransfer, setreceptorfound) {
   switch (step) {
-    // case 0:
-    //   return <AddressForm />;
     case 0:
       return <PaymentForm {...{ dataTransfer, setDataTransfer }} />;
     case 1:
@@ -84,22 +69,10 @@ function getStepContent(step, dataTransfer, setDataTransfer, setreceptorfound) {
       throw new Error("Unknown step");
   }
 }
-// function getStepContent(step) {
-//   switch (step) {
-//     case 0:
-//       return <AddressForm />;
-//     case 1:
-//       return <PaymentForm />;
-//     case 2:
-//       return <Review />;
-//     default:
-//       throw new Error("Unknown step");
-//   }
-// }
 
 export default function Transfer() {
   const [dataTransfer, setDataTransfer] = React.useState({
-    depositoOrTranferencia: "",
+    depositoOrTranferencia: 0,
     cuentareceptora: "",
   });
   const [receptorfound, setreceptorfound] = React.useState(true);
@@ -110,6 +83,7 @@ export default function Transfer() {
     setActiveStep(activeStep + 1);
   };
   const MakeTransfer = () => {
+
     let { depositoOrTranferencia, cuentareceptora } = dataTransfer;
     let data_Result_data = {
       depositoOrTranferencia: Number(
@@ -147,21 +121,19 @@ export default function Transfer() {
             "success"
           );
           setDataTransfer({
-            depositoOrTranferencia: "",
+            depositoOrTranferencia: 0,
             cuentareceptora: "",
           });
         }
+
+
         if (data.status === false) {
           swal("Transferencia errónea", ` ${data.message}`, "error");
         }
-
-        //console.log(result);
       })
       .catch((error) =>
         swal("Transferencia errónea", ` ${error.message}`, "error")
       );
-
-    //alert("Hacer transferencia");
   };
   const handleBack = () => {
     setDataTransfer({
@@ -171,19 +143,11 @@ export default function Transfer() {
     setActiveStep(activeStep - 1);
     setreceptorfound(true);
   };
-  // const handleOpen = () => {
-  //   setActiveStep(0);
-  // };
+
   return (
     <React.Fragment>
       <CssBaseline />
-      {/* <AppBar position="absolute" color="default" className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
-            Company name
-          </Typography>
-        </Toolbar>
-      </AppBar> */}
+
       <Helmet>
         <meta
           name="description"
@@ -198,9 +162,7 @@ export default function Transfer() {
           className={classes.paper}
         >
           <Typography component="h1" variant="h4" align="center">
-            Transferir
-            {/* <br />
-            {JSON.stringify(dataTransfer)} */}
+            Transferir {JSON.stringify(dataTransfer)}
           </Typography>
           <Stepper activeStep={activeStep} className={classes.stepper}>
             {steps.map((label) => (
@@ -209,29 +171,7 @@ export default function Transfer() {
               </Step>
             ))}
           </Stepper>
-          {/* <React.Fragment>
-            {activeStep === steps.length ? (
-              <React.Fragment>
-                <Typography variant="h5" gutterBottom>
-                  Transferencia exitosa
-                </Typography>
-                <Typography variant="subtitle1">
-                  Acabas de transferir el monto de
-                  {" " + dataTransfer.depositoOrTranferencia} soles a la cuenta{" "}
-                  {dataTransfer.cuentareceptora}
-                  <br />
-                  <Button
-                    onClick={handleOpen}
-                    className={classes.button}
-                    variant="contained"
-                    color="primary"
-                  >
-                    Transferir de nuevo
-                  </Button>
-                </Typography>
-              </React.Fragment>
-            ) : (
-              <React.Fragment> */}
+
           {getStepContent(
             activeStep,
             dataTransfer,
@@ -256,21 +196,8 @@ export default function Transfer() {
             >
               {activeStep === steps.length - 1 ? "Transferir" : "Next"}
             </Button>
-
-            {/* <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={handleNext}
-                    className={classes.button}
-                  >
-                    {activeStep === steps.length - 1 ? "Place order" : "Next"}
-                  </Button> */}
           </div>
-          {/* </React.Fragment>
-            )}
-          </React.Fragment> */}
         </Paper>
-        {/* <Copyright /> */}
       </main>
     </React.Fragment>
   );
