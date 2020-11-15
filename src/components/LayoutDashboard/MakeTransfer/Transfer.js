@@ -162,7 +162,7 @@ export default function Transfer() {
           className={classes.paper}
         >
           <Typography component="h1" variant="h4" align="center">
-            Transferir {JSON.stringify(dataTransfer)}
+            Transferir
           </Typography>
           <Stepper activeStep={activeStep} className={classes.stepper}>
             {steps.map((label) => (

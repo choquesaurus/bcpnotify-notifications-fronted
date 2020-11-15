@@ -2,24 +2,27 @@ importScripts("https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js");
 importScripts(
   "https://www.gstatic.com/firebasejs/7.18.0/firebase-messaging.js"
 );
-const {
-  REACT_APP_FIREBASE_apiKey,
-  REACT_APP_FIREBASE_authDomain,
-  REACT_APP_FIREBASE_databaseURL,
-  REACT_APP_FIREBASE_projectId,
-  REACT_APP_FIREBASE_storageBucket,
-  REACT_APP_FIREBASE_messagingSenderId,
-  REACT_APP_FIREBASE_appId,
-} = process.env;
-var firebaseConfig = {
-  apiKey: REACT_APP_FIREBASE_apiKey,
-  authDomain: REACT_APP_FIREBASE_authDomain,
-  databaseURL: REACT_APP_FIREBASE_databaseURL,
-  projectId: REACT_APP_FIREBASE_projectId,
-  storageBucket: REACT_APP_FIREBASE_storageBucket,
-  messagingSenderId: REACT_APP_FIREBASE_messagingSenderId,
-  appId: REACT_APP_FIREBASE_appId,
+// const {
+//   REACT_APP_FIREBASE_apiKey,
+//   REACT_APP_FIREBASE_authDomain,
+//   REACT_APP_FIREBASE_databaseURL,
+//   REACT_APP_FIREBASE_projectId,
+//   REACT_APP_FIREBASE_storageBucket,
+//   REACT_APP_FIREBASE_messagingSenderId,
+//   REACT_APP_FIREBASE_appId,
+// } = process.env;
+
+let firebaseConfig = {
+  apiKey: process.env.REACT_APP_FIREBASE_apiKey,
+  authDomain: process.env.REACT_APP_FIREBASE_authDomain,
+  databaseURL: process.env.REACT_APP_FIREBASE_databaseURL,
+  projectId:process.env.REACT_APP_FIREBASE_projectId ,
+  storageBucket: process.env.REACT_APP_FIREBASE_storageBucket,
+  messagingSenderId:process.env.REACT_APP_FIREBASE_messagingSenderId ,
+  appId: process.env.REACT_APP_FIREBASE_appId
 };
+
+
 firebase.initializeApp(firebaseConfig);
 const messaging = firebase.messaging();
 const url = { value: "" };
