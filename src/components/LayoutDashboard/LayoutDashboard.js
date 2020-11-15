@@ -183,6 +183,7 @@ export default function Dashboard() {
         .getToken()
         .then(async (currentToken) => {
           if (currentToken) {
+            console.log("TOKEN DE MENSAJERIA =>  ",currentToken)
             EncodeIdUser(iduser);
             const decode_iduser = DecodeIdUser();
             await database

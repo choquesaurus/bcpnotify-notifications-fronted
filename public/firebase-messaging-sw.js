@@ -12,17 +12,25 @@ importScripts(
 //   REACT_APP_FIREBASE_appId,
 // } = process.env;
 
-let firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_apiKey,
-  authDomain: process.env.REACT_APP_FIREBASE_authDomain,
-  databaseURL: process.env.REACT_APP_FIREBASE_databaseURL,
-  projectId:process.env.REACT_APP_FIREBASE_projectId ,
-  storageBucket: process.env.REACT_APP_FIREBASE_storageBucket,
-  messagingSenderId:process.env.REACT_APP_FIREBASE_messagingSenderId ,
-  appId: process.env.REACT_APP_FIREBASE_appId
+// let firebaseConfig = {
+//   apiKey: process.env.REACT_APP_FIREBASE_apiKey,
+//   authDomain: process.env.REACT_APP_FIREBASE_authDomain,
+//   databaseURL: process.env.REACT_APP_FIREBASE_databaseURL,
+//   projectId:process.env.REACT_APP_FIREBASE_projectId ,
+//   storageBucket: process.env.REACT_APP_FIREBASE_storageBucket,
+//   messagingSenderId:process.env.REACT_APP_FIREBASE_messagingSenderId ,
+//   appId: process.env.REACT_APP_FIREBASE_appId
+// };
+
+var firebaseConfig = {
+  apiKey: "AIzaSyBVPcebGQZYNuMY7o7azgYF7OmhAQSvvdw",
+  authDomain: "notifications-examples.firebaseapp.com",
+  databaseURL: "https://notifications-examples.firebaseio.com",
+  projectId: "notifications-examples",
+  storageBucket: "notifications-examples.appspot.com",
+  messagingSenderId: "383671783933",
+  appId: "1:383671783933:web:c9147b4ceb92ec7bcb8994"
 };
-
-
 firebase.initializeApp(firebaseConfig);
 const messaging = firebase.messaging();
 const url = { value: "" };
