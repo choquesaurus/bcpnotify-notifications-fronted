@@ -10,14 +10,13 @@ import List from "@material-ui/core/List";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
-import Badge from "@material-ui/core/Badge";
+// import Badge from "@material-ui/core/Badge";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems, secondaryListItems } from "./listItems";
 import Chart from "./Chart";
 import Saldo from "./Saldo";
@@ -25,6 +24,7 @@ import { Outlet } from "react-router-dom";
 import { messaging, database } from "../../firebase/init";
 import MenuAvatarProfile from "./MenuUserAvatar/MenuUserAvatarProfile";
 
+//import {} from  ".";
 import {
   REACT_APP_URL_BASE_BACKEND,
   REACT_APP_URL_BASE,
@@ -37,6 +37,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 import UseContextDetailsUser from "./UseContextDetailsUser/UseContextDetailsUser";
 import Helmet from "react-helmet";
+import MenuHistoryNotifications from "./MenuNotifications/menuhistorynotification"
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -123,6 +125,7 @@ export default function Dashboard() {
   const [open, setOpen] = React.useState(true);
   const [miSaldo, setmiSaldo] = useState("");
   const [detailsUser, setDetailsUser] = useState({});
+  const [HistoryNotifications,SetHistoryNotifications] = useState([]);
   //const [mensaje, setMensaje] = useState("");
   async function getIdUser() {
     const request = await (
@@ -183,7 +186,7 @@ export default function Dashboard() {
         .getToken()
         .then(async (currentToken) => {
           if (currentToken) {
-            console.log("TOKEN DE MENSAJERIA =>  ",currentToken)
+            // console.log("TOKEN DE MENSAJERIA =>  ",currentToken)
             EncodeIdUser(iduser);
             const decode_iduser = DecodeIdUser();
             await database
@@ -200,6 +203,14 @@ export default function Dashboard() {
         //alert(JSON.stringify(payload.notification));
         //setMensaje(JSON.stringify(payload.data));
         //console.log("onMessage => ", payload);
+
+        SetHistoryNotifications(HistoryNotifications=>[
+          ...HistoryNotifications,
+          {
+            ...payload.data,
+            fecha:new Date().toLocaleDateString()
+          }
+          ])
         new Audio(process.env.REACT_APP_URL_SOUND_NOTIFICATION).play();
         toast.info(payload.data.body, {
           position: "top-center",
@@ -210,9 +221,10 @@ export default function Dashboard() {
           draggable: true,
           progress: undefined,
         });
+
       });
     })();
-  }, []);
+  }, [HistoryNotifications]);
 
   // const CloseSession = async () => {
   //   //await (await fetch("http://localhost:5006/logout")).json();
@@ -265,9 +277,12 @@ export default function Dashboard() {
           </Typography>
 
           <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
+
+            {/* <Badge badgeContent={3} color="secondary">
               <NotificationsIcon />
-            </Badge>
+            </Badge> */}
+
+            <MenuHistoryNotifications notifications={HistoryNotifications}/>
           </IconButton>
           <MenuAvatarProfile photoURL={detailsUser.photoURL} />
           {/* <Avatar alt="Remy Sharp" src={detailsUser.photoURL} /> */}
